@@ -22,15 +22,14 @@ createreadIntRef :: IO (IORef Int)
 createreadIntRef = newIORef 0
 
 populateRef :: IORef Int -> IO ()
-populateRef = do
+populateRef ref = do
     n <- readInt
-    writeIORef ref n
+    writeIORef ref (n + 1)
+
 
 main :: IO ()
 main = do
-    x <- getLine
-    y <- readInt
-    print (y + 1)
-    putStrLn (para(reverse(x)))
-    putStrLn "goodbye"
-
+    ref <- createreadIntRef
+    populateRef ref
+    x <- readIORef ref
+    print x

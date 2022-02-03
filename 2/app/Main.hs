@@ -96,9 +96,9 @@ playGame (humanPlayer, currentPlayer, b) = do
       else do
         putStrLn "The AI is thinking..."
         case findBestMove (currentPlayer, b) of
-          Just (i, _) -> do
+          Just (j, _) -> do
             putStrLn "The AI makes a move."
-            pure i
+            pure j
           Nothing -> error "AI error: impossible state"
     playGame (humanPlayer, opponent currentPlayer, updateBoard (i, currentPlayer, b))
 
